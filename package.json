@@ -1,0 +1,29 @@
+{
+  "name": "stevenblack",
+  "version": "1.0.0",
+  "author": "xxRockOnxx",
+  "description": "A package that checks if a domain is blacklisted in StevenBlack hosts file",
+  "homepage": "https://github.com/xxRockOnxx/stevenblack#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xxRockOnxx/stevenblack.git"
+  },
+  "bugs": {
+    "url": "https://github.com/xxRockOnxx/stevenblack/issues"
+  },
+  "keywords": [
+    "stevenblack",
+    "blacklist",
+    "filter",
+    "domain",
+    "nsfw"
+  ],
+  "license": "ISC",
+  "main": "index.js",
+  "scripts": {
+    "install": "node download.js"
+  },
+  "dependencies": {
+    "node-fetch": "^2.6.12"
+  }
+}
