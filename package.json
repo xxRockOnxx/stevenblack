@@ -1,6 +1,6 @@
 {
   "name": "stevenblack",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "author": "xxRockOnxx",
   "description": "A package that checks if a domain is blacklisted in StevenBlack hosts file",
   "homepage": "https://github.com/xxRockOnxx/stevenblack#readme",
@@ -22,9 +22,13 @@
   "main": "index.js",
   "types": "index.d.ts",
   "scripts": {
-    "install": "node download.js"
+    "install": "node download.js",
+    "release": "standard-version"
   },
   "dependencies": {
     "node-fetch": "^2.6.12"
+  },
+  "devDependencies": {
+    "standard-version": "^9.5.0"
   }
 }
