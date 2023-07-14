@@ -1,29 +1,31 @@
 const fs = require("fs");
+const path = require("path");
 const readline = require("readline");
 
-async function assertHostsFile() {
-  try {
-    await fs.promises.stat("./hosts");
-  } catch (e) {
-    throw new Error("Hosts file not found");
-  }
-}
+const hostsPath = path.join(__dirname, "hosts");
 
-module.exports = async function (domain) {
-  await assertHostsFile();
-
-  const stream = fs.createReadStream("./hosts");
+module.exports = function isBlacklisted(domain) {
+  const stream = fs.createReadStream(hostsPath);
 
   const rl = readline.createInterface({
     input: stream,
     crlfDelay: Infinity,
   });
 
-  for await (const line of rl) {
-    if (domain.startsWith(line)) {
-      return true;
-    }
-  }
+  return new Promise((resolve, reject) => {
+    let found = false;
 
-  return false;
+    rl.on("line", (line) => {
+      if (domain.startsWith(line)) {
+        found = true;
+        rl.close();
+      }
+    })
+      .on("close", () => {
+        resolve(found);
+      })
+      .on("error", (e) => {
+        reject(e);
+      });
+  });
 };

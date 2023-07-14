@@ -1,6 +1,6 @@
 {
   "name": "stevenblack",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "xxRockOnxx",
   "description": "A package that checks if a domain is blacklisted in StevenBlack hosts file",
   "homepage": "https://github.com/xxRockOnxx/stevenblack#readme",
