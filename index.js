@@ -4,11 +4,13 @@ const readline = require("readline");
 
 const hostsPath = path.join(__dirname, "hosts");
 
-module.exports = function isBlacklisted(domain) {
-  const stream = fs.createReadStream(hostsPath);
+function stream() {
+  return fs.createReadStream(hostsPath);
+}
 
+function isBlacklisted(domain) {
   const rl = readline.createInterface({
-    input: stream,
+    input: stream(),
     crlfDelay: Infinity,
   });
 
@@ -28,4 +30,9 @@ module.exports = function isBlacklisted(domain) {
         reject(e);
       });
   });
+}
+
+module.exports = {
+  stream,
+  isBlacklisted,
 };
